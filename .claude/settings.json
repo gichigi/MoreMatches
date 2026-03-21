@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "touch /tmp/claude-code-edited"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f /tmp/claude-code-edited ]; then if ! lsof -i :3000 -sTCP:LISTEN -t >/dev/null 2>&1; then rm /tmp/claude-code-edited; echo \"{\\\"systemMessage\\\": \\\"[Preview Required] Code was edited but no dev server is running. Install dependencies if needed, call preview_start, then follow <verification_workflow>.\\\"}\"; else rm /tmp/claude-code-edited; fi; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
