@@ -8,6 +8,7 @@ import { AboutSection } from "@/components/sections/about-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { Instagram } from "lucide-react"
 import { useRef, useEffect, useState } from "react"
+import { track } from "@vercel/analytics"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -120,7 +121,10 @@ export default function Home() {
             {/* CTA area: fixed height so nothing shifts on transition */}
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 relative h-12">
               <button
-                onClick={() => setCtaClicked(true)}
+                onClick={() => {
+                  track("cta_click", { label: "get_early_access" })
+                  setCtaClicked(true)
+                }}
                 aria-hidden={ctaClicked}
                 className={`absolute inset-0 w-fit rounded-full bg-foreground px-8 font-sans text-sm font-medium text-background transition-all duration-500 hover:bg-foreground/90 hover:scale-[1.02] active:scale-[0.98] ${
                   ctaClicked ? "opacity-0 pointer-events-none scale-95" : "opacity-100"
@@ -161,6 +165,7 @@ export default function Home() {
           href="https://instagram.com/more_matches"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => track("cta_click", { label: "instagram_link" })}
           className="flex items-center gap-1.5 font-mono text-xs text-foreground/50 transition-colors duration-200 hover:text-foreground/80"
         >
           <Instagram size={12} strokeWidth={1.5} />
