@@ -105,8 +105,8 @@ export default function Home() {
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <section className="flex min-h-screen w-full flex-col items-center justify-center px-6 py-24 md:px-12 lg:px-16">
-          <div className="max-w-3xl text-center">
+        <section className="flex min-h-screen w-full flex-col justify-center px-6 py-24 md:items-center md:px-12 lg:px-16">
+          <div className="max-w-3xl md:text-center">
             <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
               <p className="font-mono text-xs tracking-widest text-foreground/90 uppercase">Launching soon</p>
             </div>
@@ -115,11 +115,11 @@ export default function Home() {
               <br />
               More matches.
             </h1>
-            <p className="mx-auto mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
+            <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:mx-auto md:text-xl">
               Get real tips on your dating profile so you can stop second-guessing and start matching.
             </p>
             {/* CTA area: fixed height so nothing shifts on transition */}
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 relative flex h-12 justify-center">
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 relative flex h-12 md:justify-center">
               <button
                 onClick={() => {
                   track("cta_click", { label: "get_early_access" })
@@ -134,7 +134,7 @@ export default function Home() {
               </button>
               <p
                 aria-live="polite"
-                className={`absolute inset-0 flex items-center justify-center font-sans text-lg text-foreground transition-all duration-700 ease-out ${
+                className={`absolute inset-0 flex items-center font-sans text-lg text-foreground transition-all duration-700 ease-out md:justify-center ${
                   ctaClicked
                     ? "opacity-100 translate-y-0 scale-100"
                     : "opacity-0 translate-y-4 scale-95 pointer-events-none"
